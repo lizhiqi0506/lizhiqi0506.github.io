@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hello World</title>
+    <url>/2021/12/18/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>面试问题（英文）</title>
     <url>/2021/12/19/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%EF%BC%88%E8%8B%B1%E6%96%87%EF%BC%89/</url>
-    <content><![CDATA[<h3 id="个人素质与想法方面的"><a href="#个人素质与想法方面的" class="headerlink" title="个人素质与想法方面的"></a>个人素质与想法方面的</h3><h4 id="科研相关"><a href="#科研相关" class="headerlink" title="科研相关"></a>科研相关</h4><ol>
+    <content><![CDATA[<h4 id="科研相关"><a href="#科研相关" class="headerlink" title="科研相关"></a>科研相关</h4><ol>
 <li><p>What is the most challenging part of academic research? (科研中最有挑战性的是什么？)</p>
 <blockquote>
 <p>I think deciding a topic is the most challenging. Sometimes the supervisor or senior students in the lab will give us a specific topic, that’s good, but most of the time, we should decide a topic by ourselves. There are so many things to think about. How difficult is this topic? Has anyone done this before? What is the practical significance of this project? Would this topic work? All of these need to be carefully considered and verified.</p>
@@ -83,13 +101,35 @@
 </li>
 <li><p>What are your plans for your doctoral life? (你对博士生期间生活的规划是怎么样的？)</p>
 <blockquote>
-<p>If I can be admitted, I will learn the basic knowledge of this major before enrollment so that I can participate in the research work of lab as soon as possible. </p>
-<p>After enrollment, in terms of study, I will keep up with the latest developments in related research fields and read the latest high-level papers.</p>
+<p>If I can be admitted, I will learn the basic knowledge of this major and think of my detailed research topic before enrollment so that I can participate in the research work of lab as soon as possible. </p>
+<p>After enrollment, I will keep up with the latest developments in related research fields and read the latest high-level papers. And during the first three or four years of my doctorate, I will try to produce academic research results. I don’t expect them to be many, but I want them to be high-quality and creative.</p>
+<p>And in the last year of my doctorate, I will complete my doctoral thesis in a high standard.</p>
+<p>What’s more, in my spare time, I will actively participate in various activities held by the school and fully enjoy my postgraduate life.</p>
 </blockquote>
 </li>
 <li><p>What’s the most challenging thing you’ve done so far, and how did you overcome it? (截止到目前做的最有挑战性的事情是什么？你是怎么克服它的？)</p>
 <blockquote>
 <p>I think the most challenging thing I’ve done is the second academic research experience I mentioned in the PPT. Before the project, my programming skills were very poor and my knowledge of artificial intelligence algorithms was very basic. Since the project was undertaken by me alone, the beginning was difficult. There was a lot of things to learn, there were always bug existing in the code, the results of experiments were always unsatisfactory. But this process was not painful, on the contrary, I got a sense of pleasure and achievement from overcoming these difficulties and learning new knowledge.</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="项目相关"><a href="#项目相关" class="headerlink" title="项目相关"></a>项目相关</h4><ol>
+<li><p>What do you think is the most creative part in your research? (你认为你的研究项目中最有创造性的部分是什么？)</p>
+<blockquote>
+<p>I think the most creative part in my research is that, based on the assumption that one methylation site should have similar expression values in the same class of samples and different values in different class of samples, I designed a method to abstract the methylation patterns into the structure of graphs. There is a transformation from “clinical sample as main subject and the values of its methylation sites as features” to “methylation sites as main subject and the values of it on different clinical samples as features”. I think it’s a key step so that we can use graph neural network to extract the differentially expressed methylation sites.</p>
+</blockquote>
+</li>
+<li><p>Why do you use SAGPooling in your work?</p>
+<blockquote>
+<p>At the beginning of this research, we designed the main idea of the study, and at the main time, I was learning how to realize the programming of GNN. There is a package of python named <code>pytorch geometric</code> which is designed specifically for graph neural networks based on pytorch.</p>
+<p>There was a function named SAGPooling. I wanted to know what it did, so I read the paper of this method that was attached to the website of the package. </p>
+<p>After reading, I thought, Wow, it’s exactly the method that perfectly fit our idea. </p>
+<p>Fortunately this method did perform well in this research.</p>
+</blockquote>
+</li>
+<li><p>Is any other with you in this research?</p>
+<blockquote>
+<p>There is a postdoctor with me. But because she has many other projects, I did all the major work of this project. All the programming, all the experiment. During the first half of this year, I updated her regularly on my progress, and in the second half of this year, when the project came to an end, she edited the manuscript with me.</p>
 </blockquote>
 </li>
 </ol>
@@ -100,23 +140,5 @@
       <tags>
         <tag>西湖大学</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/12/18/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
 </search>
