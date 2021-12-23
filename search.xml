@@ -132,6 +132,12 @@
 <p>There is a postdoctor with me. But because she has many other projects, I did all the major work of this project. All the programming, all the experiment. During the first half of this year, I updated her regularly on my progress, and in the second half of this year, when the project came to an end, she edited the manuscript with me.</p>
 </blockquote>
 </li>
+<li><p>How do you extract the methylation sites?</p>
+<blockquote>
+<p>It is mentioned before that there are 3 successive modules in the model. We fixed the pooling rate of the first two modules as 0.5 and change that of the last module to change the number of methylation sites kept finally. Through experiments, we found that the accuracy of graph classification was the highest when the pooling rate of the third module was set as 0.5. So the number of finally kept nodes was 250. </p>
+<p>And theoratically, the </p>
+</blockquote>
+</li>
 </ol>
 ]]></content>
       <categories>
