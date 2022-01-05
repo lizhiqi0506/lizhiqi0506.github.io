@@ -19,6 +19,27 @@
 ]]></content>
   </entry>
   <entry>
+    <title>history_of_cv</title>
+    <url>/2022/01/05/history-of-cv/</url>
+    <content><![CDATA[<h3 id="计算机视觉的发展历史（from-1960s）"><a href="#计算机视觉的发展历史（from-1960s）" class="headerlink" title="计算机视觉的发展历史（from 1960s）"></a>计算机视觉的发展历史（from 1960s）</h3><hr>
+<h4 id="大致的时间线"><a href="#大致的时间线" class="headerlink" title="大致的时间线"></a>大致的时间线</h4><ul>
+<li>1960-1970: Blocks Worlds, Edges and Model Fitting</li>
+<li>1970-1981: Low-level vision: stereo, flow, shape-from-shading</li>
+<li>1985-1988: Neural networks, backpropagation, self-driving</li>
+<li>1990-2000: Dense stereo and multi-view stereo, MRFs(马尔科夫随机场)</li>
+<li>2000-2010: Features, descriptors, large-scale structure-from-motion</li>
+<li>2010-now: Deep learning, large datasets, quick growth, commercialization</li>
+</ul>
+<p><img src="/2022/01/05/history-of-cv/01/05/history-of-cv/overview-timeline.png"></p>
+]]></content>
+      <categories>
+        <category>review</category>
+      </categories>
+      <tags>
+        <tag>computer vision</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>面试问题（英文）</title>
     <url>/2021/12/19/%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98%EF%BC%88%E8%8B%B1%E6%96%87%EF%BC%89/</url>
     <content><![CDATA[<h4 id="科研相关"><a href="#科研相关" class="headerlink" title="科研相关"></a>科研相关</h4><ol>
