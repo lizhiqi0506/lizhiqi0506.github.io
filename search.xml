@@ -31,6 +31,16 @@
 <li>2010-now: Deep learning, large datasets, quick growth, commercialization</li>
 </ul>
 <p><img src="/2022/01/05/history-of-cv/overview-timeline.png"></p>
+<h4 id="当前面临的挑战"><a href="#当前面临的挑战" class="headerlink" title="当前面临的挑战"></a>当前面临的挑战</h4><ul>
+<li>Un-/Self-Supervised Learning</li>
+<li>Interactive learning</li>
+<li>Accuracy (e.g., self-driving)</li>
+<li>Robustness and generalization</li>
+<li>Inductive biases</li>
+<li>Understanding and mathematics</li>
+<li>Memory and compute</li>
+<li>Ethics and legal questions</li>
+</ul>
 ]]></content>
       <categories>
         <category>review</category>
