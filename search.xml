@@ -5,7 +5,11 @@
     <url>/2022/01/09/MVG-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B0%84%E5%BD%B1%E5%87%A0%E4%BD%95%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h2 id="MVG-chpt2-射影几何基础概念"><a href="#MVG-chpt2-射影几何基础概念" class="headerlink" title="MVG-chpt2-射影几何基础概念"></a>MVG-chpt2-射影几何基础概念</h2><h3 id="1-2D射影平面"><a href="#1-2D射影平面" class="headerlink" title="1. 2D射影平面"></a>1. 2D射影平面</h3><h4 id="1-1-点与直线"><a href="#1-1-点与直线" class="headerlink" title="1.1 点与直线"></a>1.1 点与直线</h4><h5 id="直线的齐次表示"><a href="#直线的齐次表示" class="headerlink" title="直线的齐次表示"></a>直线的齐次表示</h5><p>平面上的一条直线可以用$ax+by+c=0$表示，一组$(a,b,c)$的值唯一确定一条直线，因此，一条直线也可以用$(a,b,c)^{\bold{T}}$表示，同时，对于任何非零常数$k$，直线$(a,b,c)^\bold{T}$与直线$k(a,b,c)^\bold{T}$表示同一条直线。我们视这两个只相差一个全局缩放因子的向量是等价的，这种等价关系下的向量等价类被称为<strong>齐次</strong>向量，上述即为直线的齐次表示。</p>
 <p>$\bold{IR}^3-(0,0,0)^\bold{T}$中的向量等价类的集合组成射影空间$\bold{IP}^2$</p>
-<h5 id="点的齐次表示"><a href="#点的齐次表示" class="headerlink" title="点的齐次表示"></a>点的齐次表示</h5><p>点$\bold{x}=(x,y)^\bold{T}$在直线$\bold{l}=(a,b,c)^\bold{T}$上的充要条件是：<br>$$<br>ax+by+c=0<br>$$<br>即：<br>$$<br>(x,y,1)(a,b,c)^\bold{T}=(x,y,1)\bold{l}=0<br>$$<br>即通过添加最后一个坐标$“1”$，将$\bold{IR}^2$（2维欧氏空间）中的点$\bold{x}$表示为3维向量。</p>
+<h5 id="点的齐次表示"><a href="#点的齐次表示" class="headerlink" title="点的齐次表示"></a>点的齐次表示</h5><p>点$\bold{x}=(x,y)^\bold{T}$在直线$\bold{l}=(a,b,c)^\bold{T}$上的充要条件是：</p>
+<script type="math/tex; mode=display">
+ax+by+c=0</script><p>即：</p>
+<script type="math/tex; mode=display">
+(x,y,1)(a,b,c)^\bold{T}=(x,y,1)\bold{l}=0</script><p>即通过添加最后一个坐标$“1”$，将$\bold{IR}^2$（2维欧氏空间）中的点$\bold{x}$表示为3维向量。</p>
 <p>而对任意非零$k$，方程$(kx,ky,k)\bold{l}=0$当且仅当$(x,y,1)\bold{l}=0$。因而，可自然地把$k$取不同非零值构成的向量集$(kx,ky,k)^\bold{T}$看作是$\bold{IR}^2$中点$(x,y)^\bold{T}$的一种表示，因此，与直线一样，点也可用齐次向量表示。</p>
 <p>即，任意$\bold{IR}^2$中的点$(x,y)^\bold{T}$，其$\bold{IP}^2$中的齐次表示为$(kx,ky,k)^\bold{T}(k\neq0)$</p>
 <h5 id="三个结论"><a href="#三个结论" class="headerlink" title="三个结论"></a>三个结论</h5><ul>
@@ -35,16 +39,12 @@
     <url>/2021/12/18/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
   </entry>
@@ -60,7 +60,7 @@
 <li>2000-2010: Features, descriptors, large-scale structure-from-motion</li>
 <li>2010-now: Deep learning, large datasets, quick growth, commercialization</li>
 </ul>
-<p><img src="/2022/01/05/history-of-cv/overview-timeline.png"></p>
+<p><img src="/2022/01/05/history-of-cv/overview-timeline.png" alt></p>
 <h4 id="当前面临的挑战"><a href="#当前面临的挑战" class="headerlink" title="当前面临的挑战"></a>当前面临的挑战</h4><ul>
 <li>Un-/Self-Supervised Learning</li>
 <li>Interactive learning</li>
