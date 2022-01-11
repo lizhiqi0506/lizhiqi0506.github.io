@@ -35,6 +35,50 @@ ax+by+c=0</script><p>即：</p>
       </tags>
   </entry>
   <entry>
+    <title>MVG-学习笔记-射影变换</title>
+    <url>/2022/01/10/MVG-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B0%84%E5%BD%B1%E5%8F%98%E6%8D%A2/</url>
+    <content><![CDATA[<h2 id="射影变换（Projective-Transformation）"><a href="#射影变换（Projective-Transformation）" class="headerlink" title="射影变换（Projective Transformation）"></a>射影变换（Projective Transformation）</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><h4 id="定义一"><a href="#定义一" class="headerlink" title="定义一"></a>定义一</h4><p><strong>射影变换</strong>是$\text{IP}^2$到它自身的一种满足下列条件的可逆映射$h$: 三点$\pmb{\text{x}}_1$, $\pmb{\text{x}}_2$, $\pmb{\text{x}}_3$三点共线当且仅当$h(\pmb{\text{x}}_1)$, $h(\pmb{\text{x}}_2)$, $h(\pmb{\text{x}}_3)$也共线。</p>
+<p>射影变换组成一个群，即射影变换的逆以及多个射影变换的复合仍是射影变换。</p>
+<h4 id="定义二"><a href="#定义二" class="headerlink" title="定义二"></a>定义二</h4><p>映射$h$: $\text{IP}^2 \to \text{IP}^2$是射影变换的充要条件是：存在一个3x3的非奇异矩阵$\text{H}$，使得$\text{IP}^2$的任何一个用向量$\pmb{\text{x}}$表示的点都满足$h(\pmb{\text{x}})=\text{H}\pmb{\text{x}}$.</p>
+<h4 id="定义三"><a href="#定义三" class="headerlink" title="定义三"></a>定义三</h4><p>一个平面射影变换是关于3维齐次向量的一种线性变换，并可以用一个非奇异3x3矩阵表示为：</p>
+<script type="math/tex; mode=display">
+\left(
+\begin{matrix}
+x'_1 \\
+x'_2 \\
+x'_3
+\end{matrix}
+\right)
+=
+\left[\begin{matrix}
+h_{11} & h_{12} & h_{13} \\ h_{21} & h_{22} & h_{23} \\ h_{31} & h_{32} & h_{33}
+\end{matrix}\right]
+\left(
+\begin{matrix}
+x_1 \\
+x_2 \\
+x_3
+\end{matrix}
+\right)</script><p>或更简洁地表示为$\pmb{\text{x}}’=\text{H}\pmb{\text{x}}$</p>
+<p>注：该方程中的矩阵$\text{H}$乘以任意一个非零的尺度因子都不会使射影变换改变，有意义的仅是矩阵元素的比率。在$\text{H}$的9个元素中有8个独立比率，因此一个射影变换有8个自由度。</p>
+<h3 id="直线与二次曲线的变换"><a href="#直线与二次曲线的变换" class="headerlink" title="直线与二次曲线的变换"></a>直线与二次曲线的变换</h3><p>在点变换$\pmb{\text{x}}’=\text{H}\pmb{\text{x}}$下：</p>
+<h4 id="直线的变换"><a href="#直线的变换" class="headerlink" title="直线的变换"></a>直线的变换</h4><p>如果点$\pmb{\text{x}}$在直线$\pmb{\text{l}}$上，那么$\pmb{\text{x}}^{\text{T}}\pmb{\text{l}}=0$，</p>
+<p>假设变换后的点$\pmb{\text{x}}’$在直线$\pmb{\text{l}}’$上，那么有$\pmb{\text{x}}’^{\text{T}}\pmb{\text{l}}’=0$，</p>
+<p>即$\pmb{\text{x}}^{\text{T}} \text{H}^{\text{T}}\pmb{\text{l}}’=0$，故而$\pmb{\text{l}}=\text{H}^{\text{T}}\pmb{\text{l}}’$，$\pmb{\text{l}}’=\text{H}^{-\text{T}}\pmb{\text{l}}$.</p>
+<h4 id="二次曲线的变换"><a href="#二次曲线的变换" class="headerlink" title="二次曲线的变换"></a>二次曲线的变换</h4><p>之前我们知道，二次曲线可用矩阵形式$\pmb{\text{x}}^{\text{T}}\text{C}\pmb{\text{x}}=0$表示，</p>
+<p>假设变换后的二次曲线的系数矩阵为$\text{C}’$，那么有$\pmb{\text{x}}’^\text{T}\text{C}’\pmb{\text{x}}’=0$，</p>
+<p>即$\pmb{\text{x}}^\text{T} \text{H}^\text{T}\text{C}’\text{H}\pmb{\text{x}}=0$，故而$\text{C}=\text{H}^\text{T}\text{C}’\text{H}$，</p>
+<p>所以$\text{C}’=\text{H}^{-\text{T}} \text{CH}^{-1}$</p>
+]]></content>
+      <categories>
+        <category>学习笔记</category>
+      </categories>
+      <tags>
+        <tag>计算机视觉</tag>
+        <tag>多视图几何</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hello World</title>
     <url>/2021/12/18/hello-world/</url>
     <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
@@ -47,37 +91,6 @@ ax+by+c=0</script><p>即：</p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
 ]]></content>
-  </entry>
-  <entry>
-    <title>history_of_cv</title>
-    <url>/2022/01/05/history-of-cv/</url>
-    <content><![CDATA[<h3 id="计算机视觉的发展历史（from-1960s）"><a href="#计算机视觉的发展历史（from-1960s）" class="headerlink" title="计算机视觉的发展历史（from 1960s）"></a>计算机视觉的发展历史（from 1960s）</h3><hr>
-<h4 id="大致的时间线"><a href="#大致的时间线" class="headerlink" title="大致的时间线"></a>大致的时间线</h4><ul>
-<li>1960-1970: Blocks Worlds, Edges and Model Fitting</li>
-<li>1970-1981: Low-level vision: stereo, flow, shape-from-shading</li>
-<li>1985-1988: Neural networks, backpropagation, self-driving</li>
-<li>1990-2000: Dense stereo and multi-view stereo, MRFs(马尔科夫随机场)</li>
-<li>2000-2010: Features, descriptors, large-scale structure-from-motion</li>
-<li>2010-now: Deep learning, large datasets, quick growth, commercialization</li>
-</ul>
-<p><img src="/2022/01/05/history-of-cv/overview-timeline.png" alt></p>
-<h4 id="当前面临的挑战"><a href="#当前面临的挑战" class="headerlink" title="当前面临的挑战"></a>当前面临的挑战</h4><ul>
-<li>Un-/Self-Supervised Learning</li>
-<li>Interactive learning</li>
-<li>Accuracy (e.g., self-driving)</li>
-<li>Robustness and generalization</li>
-<li>Inductive biases</li>
-<li>Understanding and mathematics</li>
-<li>Memory and compute</li>
-<li>Ethics and legal questions</li>
-</ul>
-]]></content>
-      <categories>
-        <category>review</category>
-      </categories>
-      <tags>
-        <tag>computer vision</tag>
-      </tags>
   </entry>
   <entry>
     <title>面试问题（英文）</title>
@@ -206,6 +219,37 @@ ax+by+c=0</script><p>即：</p>
       </categories>
       <tags>
         <tag>西湖大学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>history_of_cv</title>
+    <url>/2022/01/05/history-of-cv/</url>
+    <content><![CDATA[<h3 id="计算机视觉的发展历史（from-1960s）"><a href="#计算机视觉的发展历史（from-1960s）" class="headerlink" title="计算机视觉的发展历史（from 1960s）"></a>计算机视觉的发展历史（from 1960s）</h3><hr>
+<h4 id="大致的时间线"><a href="#大致的时间线" class="headerlink" title="大致的时间线"></a>大致的时间线</h4><ul>
+<li>1960-1970: Blocks Worlds, Edges and Model Fitting</li>
+<li>1970-1981: Low-level vision: stereo, flow, shape-from-shading</li>
+<li>1985-1988: Neural networks, backpropagation, self-driving</li>
+<li>1990-2000: Dense stereo and multi-view stereo, MRFs(马尔科夫随机场)</li>
+<li>2000-2010: Features, descriptors, large-scale structure-from-motion</li>
+<li>2010-now: Deep learning, large datasets, quick growth, commercialization</li>
+</ul>
+<p><img src="/2022/01/05/history-of-cv/overview-timeline.png" alt></p>
+<h4 id="当前面临的挑战"><a href="#当前面临的挑战" class="headerlink" title="当前面临的挑战"></a>当前面临的挑战</h4><ul>
+<li>Un-/Self-Supervised Learning</li>
+<li>Interactive learning</li>
+<li>Accuracy (e.g., self-driving)</li>
+<li>Robustness and generalization</li>
+<li>Inductive biases</li>
+<li>Understanding and mathematics</li>
+<li>Memory and compute</li>
+<li>Ethics and legal questions</li>
+</ul>
+]]></content>
+      <categories>
+        <category>review</category>
+      </categories>
+      <tags>
+        <tag>computer vision</tag>
       </tags>
   </entry>
 </search>
