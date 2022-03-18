@@ -1,23 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>编程小记-&quot;@&quot;运算符的作用</title>
-    <url>/2022/01/13/2022-01-13-%E7%BC%96%E7%A8%8B%E5%B0%8F%E8%AE%B0-@%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
-    <content><![CDATA[<p>在看PyG的RGCNConv的代码时，看到其前向传播中有这么一段：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">weight = self.weight</span><br><span class="line"><span class="keyword">if</span> self.num_bases <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:  <span class="comment"># Basis-decomposition =================</span></span><br><span class="line">	weight = (self.comp @ weight.view(self.num_bases, -<span class="number">1</span>)).view(</span><br><span class="line">		self.num_relations, self.in_channels_l, self.out_channels)</span><br></pre></td></tr></table></figure>
-<p>这里有个@符号，不知道是什么意思。之前只知@xxx是注解或装饰器，但显然不是这段代码的场景，这里@更像是一个运算符，其前后的两个变量都是矩阵，于是猜测@在这里是矩阵运算相关的功能。</p>
-<p>Google之后得知，Python 3.5之后，@可以作为矩阵乘法运算符，是两个矩阵直接的叉乘，<code>A @ B</code>等同于<code>np.dot(A, B)</code>以及<code>tf.matmul(A, B)</code></p>
-<p><img src="/2022/01/13/2022-01-13-%E7%BC%96%E7%A8%8B%E5%B0%8F%E8%AE%B0-@%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BD%9C%E7%94%A8/编程小记-@运算符的作用.png" style="zoom: 150%;"></p>
-]]></content>
-      <categories>
-        <category>编程小记</category>
-      </categories>
-      <tags>
-        <tag>Python</tag>
-        <tag>运算符</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>MVG-学习笔记-射影几何基础概念</title>
     <url>/2022/01/09/MVG-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0-%E5%B0%84%E5%BD%B1%E5%87%A0%E4%BD%95%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5/</url>
     <content><![CDATA[<h2 id="2D射影平面"><a href="#2D射影平面" class="headerlink" title="2D射影平面"></a>2D射影平面</h2><h3 id="点与直线"><a href="#点与直线" class="headerlink" title="点与直线"></a>点与直线</h3><h4 id="直线的齐次表示"><a href="#直线的齐次表示" class="headerlink" title="直线的齐次表示"></a>直线的齐次表示</h4><p>平面上的一条直线可以用$ax+by+c=0$表示，一组$(a,b,c)$的值唯一确定一条直线，因此，一条直线也可以用$(a,b,c)^{\text{T}}$表示，同时，对于任何非零常数$k$，直线$(a,b,c)^\text{T}$与直线$k(a,b,c)^\text{T}$表示同一条直线。我们视这两个只相差一个全局缩放因子的向量是等价的，这种等价关系下的向量等价类被称为<strong>齐次</strong>向量，上述即为直线的齐次表示。</p>
@@ -50,20 +33,6 @@ ax+by+c=0</script><p>即：</p>
         <tag>计算机视觉</tag>
         <tag>多视图几何</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Hello World</title>
-    <url>/2021/12/18/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
   </entry>
   <entry>
     <title>MVG-学习笔记-射影变换</title>
@@ -107,6 +76,56 @@ x_3
       <tags>
         <tag>计算机视觉</tag>
         <tag>多视图几何</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>编程小记-&quot;@&quot;运算符的作用</title>
+    <url>/2022/01/13/2022-01-13-%E7%BC%96%E7%A8%8B%E5%B0%8F%E8%AE%B0-@%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BD%9C%E7%94%A8/</url>
+    <content><![CDATA[<p>在看PyG的RGCNConv的代码时，看到其前向传播中有这么一段：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">weight = self.weight</span><br><span class="line"><span class="keyword">if</span> self.num_bases <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:  <span class="comment"># Basis-decomposition =================</span></span><br><span class="line">	weight = (self.comp @ weight.view(self.num_bases, -<span class="number">1</span>)).view(</span><br><span class="line">		self.num_relations, self.in_channels_l, self.out_channels)</span><br></pre></td></tr></table></figure>
+<p>这里有个@符号，不知道是什么意思。之前只知@xxx是注解或装饰器，但显然不是这段代码的场景，这里@更像是一个运算符，其前后的两个变量都是矩阵，于是猜测@在这里是矩阵运算相关的功能。</p>
+<p>Google之后得知，Python 3.5之后，@可以作为矩阵乘法运算符，是两个矩阵直接的叉乘，<code>A @ B</code>等同于<code>np.dot(A, B)</code>以及<code>tf.matmul(A, B)</code></p>
+<p><img src="/2022/01/13/2022-01-13-%E7%BC%96%E7%A8%8B%E5%B0%8F%E8%AE%B0-@%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BD%9C%E7%94%A8/编程小记-@运算符的作用.png" style="zoom: 150%;"></p>
+]]></content>
+      <categories>
+        <category>编程小记</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>运算符</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2021/12/18/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Pytorch_Conv2d参数详解</title>
+    <url>/2022/03/18/Pytorch-Conv2d%E5%8F%82%E6%95%B0%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<h3 id="torch-nn-Conv2d"><a href="#torch-nn-Conv2d" class="headerlink" title="torch.nn.Conv2d()"></a>torch.nn.Conv2d()</h3><h4 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义"></a>参数含义</h4><ul>
+<li>in_channels: 输入特征图的通道数，如果是RGB图像，则通道数为3。卷积中的特征图通道数一般是2的整数次幂。</li>
+<li>out_channels: 输出特征图的通道数。</li>
+<li>kernel_size: 卷积核的尺寸，常见的有1，3，5，7.</li>
+<li>stride: 步长，一般为1。如果大于1，则输出特征图的尺寸会小于输出特征图的尺寸。</li>
+<li>padding：填充，填充方式有constant（常量填充，默认情况下是0填充），reflect（反射填充）、replicate（复制填充）、circular（循环填充）</li>
+<li>dilation: 空洞卷积，当大于1时可以增大感受野的同时保持特征图的尺寸，默认为1。</li>
+<li>groups: 组卷积，即在卷积操作时不是逐点卷积，而是将输入通道分为多个组，稀疏连接打到降低计算量的目的，默认为1.</li>
+<li>bias：是否需要偏置。</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Pytorch</tag>
+        <tag>CNN</tag>
       </tags>
   </entry>
   <entry>
