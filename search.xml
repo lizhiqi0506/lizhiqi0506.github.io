@@ -154,7 +154,7 @@ x_3
 <li>bias：是否需要偏置。</li>
 </ul>
 <h3 id="Dropout"><a href="#Dropout" class="headerlink" title="Dropout"></a>Dropout</h3><ul>
-<li>[Dropout] (<a href="https://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf?utm_content=buffer79b43&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer">https://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf?utm_content=buffer79b43&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer</a>,)</li>
+<li><a href="https://www.jmlr.org/papers/volume15/srivastava14a/srivastava14a.pdf?utm_content=buffer79b43&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer,">Dropout Paper</a></li>
 </ul>
 <p>2012年，Hinton等人提出了Dropout算法，可以比较有效地缓解过拟合现象，起到一定正则化的效果。</p>
 <p>Dropout的基本思想如图所示，在训练时，每个神经元以概率p保留，即以1-p的概率停止工作，每次前向传播保留下来的神经元都不同，这样可以使得模型不太依赖于某些局部特征，泛化性能更强。在测试时，为了保证相同的输出期望值，每个参数还要乘以p。</p>
@@ -165,7 +165,10 @@ x_3
 <li>减少神经元间的依赖：由于两个神经元不一定同时有效，因此减少了特征之间的依赖，迫使网络学习有更为鲁棒的特征，因为神经网络不应该对特定的特征敏感，而应该从众多特征中学习更为共同的规律，这也起到了正则化的效果。</li>
 <li>生物进化：Dropout类似于性别在生物进化中的角色，物种为了适应环境变化，在繁衍时取雄性和雌性的各一半基因进行组合，这样可以适应更复杂的新环境，避免了单一基因的过拟合，当环境发生变化时也不至于灭绝。</li>
 </ul>
-<h3 id="Batch-Normalization（BN-layers）"><a href="#Batch-Normalization（BN-layers）" class="headerlink" title="Batch Normalization（BN layers）"></a>Batch Normalization（BN layers）</h3>]]></content>
+<h3 id="Batch-Normalization（BN-layers）"><a href="#Batch-Normalization（BN-layers）" class="headerlink" title="Batch Normalization（BN layers）"></a>Batch Normalization（BN layers）</h3><ul>
+<li><a href="[Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift (mlr.press">BN Paper</a>](<a href="http://proceedings.mlr.press/v37/ioffe15.pdf">http://proceedings.mlr.press/v37/ioffe15.pdf</a>))</li>
+</ul>
+]]></content>
       <tags>
         <tag>Pytorch</tag>
         <tag>CNN</tag>
