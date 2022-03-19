@@ -165,8 +165,59 @@ x_3
 <li>减少神经元间的依赖：由于两个神经元不一定同时有效，因此减少了特征之间的依赖，迫使网络学习有更为鲁棒的特征，因为神经网络不应该对特定的特征敏感，而应该从众多特征中学习更为共同的规律，这也起到了正则化的效果。</li>
 <li>生物进化：Dropout类似于性别在生物进化中的角色，物种为了适应环境变化，在繁衍时取雄性和雌性的各一半基因进行组合，这样可以适应更复杂的新环境，避免了单一基因的过拟合，当环境发生变化时也不至于灭绝。</li>
 </ul>
-<h3 id="Batch-Normalization（BN-layers）"><a href="#Batch-Normalization（BN-layers）" class="headerlink" title="Batch Normalization（BN layers）"></a>Batch Normalization（BN layers）</h3><ul>
+<h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><ul>
 <li><a href="[Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift (mlr.press">BN Paper</a>](<a href="http://proceedings.mlr.press/v37/ioffe15.pdf">http://proceedings.mlr.press/v37/ioffe15.pdf</a>))</li>
+</ul>
+<p>由于网络中参数变化导致的内部节点数据分布发生变化的现象被称做ICS（Internal Covariate Shift）。ICS现象容易使训练过程陷入饱和区，减慢网络的收敛。前面提到的ReLU从激活函数的角度出发，在一定程度上解决了梯度饱和的现象，而2015年提出的BN层，则从改变数据分布的角度避免了参数陷入饱和区。由于BN层优越的性能，其已经是当前卷积网络中的“标配”。</p>
+<h4 id="BN的过程"><a href="#BN的过程" class="headerlink" title="BN的过程"></a>BN的过程</h4><p>对于一个batch的输入$x: B=\{x_1, …, x_m\}$，其中$m$为batch的大小，BN首先对其进行白化操作，即去均值方差的过程。</p>
+<script type="math/tex; mode=display">
+\mu_B=\frac{1}{m}\sum_{i=1}^{m}x_i \\
+\sigma^2_B = \frac{1}{m}\sum_{i=1}^{m}(x_i-\mu_B)^2 \\
+\hat{x}_i = \frac{x_i-\mu_B}{\sqrt{\sigma^2_B+\epsilon}}</script><p>其中$\epsilon$是为了数值稳定而添加的一个常数（论文原文是”a constant added to the mini-batch variance for numerical stability“，这里我也不明白为什么这样就可以使数值更稳定）</p>
+<p>白化操作可以使输入的特征分布具有相同的均值与方差，固定了每一层的输入分布，从而加速网络的收敛。但是，白化操作也限制了网络中数据的表达能力，浅层学到的参数信息会被白化操作屏蔽掉，因此，BN层在白化操作后又增加了一个可学习的线性变换操作（引入可学习参数$\gamma$和$\beta$），让数据尽可能地恢复本身的表达能力：</p>
+<script type="math/tex; mode=display">
+y_i=\gamma\hat{x}_i+\beta</script><h4 id="BN的优点"><a href="#BN的优点" class="headerlink" title="BN的优点"></a>BN的优点</h4><ul>
+<li>缓解梯度消失，加速网络收敛。BN层可以让激活函数的输入数据落在非饱和区，缓解了梯度消失问题。此外，由于每一层数据的均值与方差都在一定范围内，深层网络不必去不断适应浅层网络输入的变化，实现了层间解耦，允许每一层独立学习，也加快了网络的收敛。</li>
+<li>简化调参，网络更稳定。在调参时，学习率调得过大容易出现震荡与不收敛，BN层则抑制了参数微小变化随网络加深而被放大的问题，因此对于参数变化的适应能力更强，更容易调参。</li>
+<li>防止过拟合。BN层将每一个batch的均值与方差引入到网络中，由于每个batch的这两个值都不相同，可看做为训练过程增加了随机噪音，可以起到一定的正则效果，防止过拟合。</li>
+</ul>
+<h4 id="BN的弊端"><a href="#BN的弊端" class="headerlink" title="BN的弊端"></a>BN的弊端</h4><ul>
+<li>由于是在batch的维度进行归一化，BN层要求较大的batch才能有效地工作，而物体检测等任务由于占用内存较高，限制了batch的大小，这会限制BN层有效地发挥归一化功能。</li>
+<li>数据的batch大小在训练与测试时往往不一样。在训练时一般采用滑动来计算平均值与方差，在测试时直接拿训练集的平均值与方差来使用。这种方式会导致测试集依赖于训练集，然而有时训练集与测试集的数据分布并不一致。</li>
+</ul>
+<h3 id="全连接层（Fully-Connected-Layers）"><a href="#全连接层（Fully-Connected-Layers）" class="headerlink" title="全连接层（Fully Connected Layers）"></a>全连接层（Fully Connected Layers）</h3><p>卷积网络的主要作用是从局部到整体地提取图像的特征，而全连接层则用来将卷积抽象出的特征图进一步映射到特定维度的标签空间，以求取损失或者输出预测结果。</p>
+<h3 id="全局平均池化（Global-Average-Pooling-GAP）"><a href="#全局平均池化（Global-Average-Pooling-GAP）" class="headerlink" title="全局平均池化（Global Average Pooling, GAP）"></a>全局平均池化（Global Average Pooling, GAP）</h3><p>然而，在大模型中，全连接层的参数量会变得十分庞大，会导致网络模型应用部署困难，并且其中存在着大量的参数冗余，也容易发生过拟合的现象。现在开始有很多工作采取GAP来取代全连接层，这种思想最早见于<a href="[[1312.4400\] Network In Network (arxiv.org">NIN</a>](<a href="https://arxiv.org/abs/1312.4400))（Network">https://arxiv.org/abs/1312.4400))（Network</a> in Network）网络中，</p>
+<p>一般情况下，卷积层用于提取二维数据如图片、视频等的特征，针对于具体任务（分类、回归、图像分割）等，卷积层后续会用到不同类型的网络，拿分类问题举例，最简单的方式就是将卷积网络提取出的特征（feature map）输入到softmax全连接层对应不同的类别。首先，这里的feature map是二维多通道的数据结构，类似于三个通道（红黄绿）的彩色图片，也就是这里的feature map具有空间上的信息；其次，在GAP被提出之前，常用的方式是将feature map直接拉平成一维向量（下图左），但是GAP不同，是将每个通道的二维图像做平均，最后也就是每个通道对应一个均值（下图右）。</p>
+<p><img src="/2022/03/18/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%90%84%E5%85%83%E4%BB%B6%E8%A7%A3%E6%9E%90/GAP.png" alt="GAP"></p>
+<p>总体上，使用GAP有如下几点好处：</p>
+<ul>
+<li>利用池化实现了降维，极大减少了网络的参数量。</li>
+<li>将特征提取与分类合二为一，一定程度上可以防止过拟合。</li>
+<li>由于去除了全连接层，可以接受任意图像尺寸的输入。</li>
+<li>赋予模型一定的可解释性</li>
+</ul>
+<p>但是，值得注意的是，在实践中发现使用GAP可能会导致收敛速度减慢。</p>
+<h3 id="空洞卷积（Dilated-Convolution）"><a href="#空洞卷积（Dilated-Convolution）" class="headerlink" title="空洞卷积（Dilated Convolution）"></a>空洞卷积（Dilated Convolution）</h3><p><a href="[1511.07122v2.pdf (arxiv.org">Paper</a>](<a href="https://arxiv.org/pdf/1511.07122v2.pdf">https://arxiv.org/pdf/1511.07122v2.pdf</a>))</p>
+<p>空洞卷积最初是为解决图像分割的问题而提出的。常见的图像分割算法通常使用池化层来增大感受野，同时也缩小了特征图尺寸，然后再利用上采样还原图像尺寸。特征图缩小再放大的过程造成了精度上的损失，因此需要有一种操作可以在增加感受野的同时保持特征图的尺寸不变，从而替代池化与上采样操作，在这种需求下，空洞卷积就诞生了。</p>
+<p>空洞卷积，顾名思义就是卷积核中间带有一些洞，跳过一些元素进行卷积。在此以3×3卷积为例，下图中，a是普通的卷积过程，在卷积核紧密排列在特征图上滑动计算，而b代表了空洞数为2的空洞卷积，可以看到，在特征图上每2行或者2列选取元素与卷积核卷积。类似地，c代表了空洞数为3的空洞卷积。</p>
+<p><img src="/2022/03/18/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%90%84%E5%85%83%E4%BB%B6%E8%A7%A3%E6%9E%90/dilatedConv.png" alt="DilatedConv"></p>
+<p>空洞卷积的优点显而易见，在不引入额外参数的前提下可以任意扩大感受野，同时保持特征图的分辨率不变。如上图中与普通3x3卷积相同的参数量，却可以达到与5x5、7x7卷积相当的感受野。这一点在分割与检测任务中十分有用，感受野的扩大可以检测大物体，而特征图分辨率不变使得物体定位更加精准。</p>
+<p>当然空洞卷积也有一些缺陷：</p>
+<ul>
+<li>网格效应（Gridding Effect）：由于空洞卷积是一种稀疏的采样方式，当多个空洞卷积叠加时，有些像素根本没有被利用到，会损失信息的连续性与相关性，进而影响分割、检测等要求较高的任务。</li>
+<li>远距离的信息没有相关性：空洞卷积采取了稀疏的采样方式，导致远距离卷积得到的结果之间缺乏相关性，进而影响分类的结果。</li>
+<li>不同尺度物体的关系：大的dilation rate对于大物体分割与检测有利，但是对于小物体则有弊无利，如何处理好多尺度问题的检测，是空洞卷积设计的重点。</li>
+</ul>
+<p>对于上述缺陷，有多篇文章提出了不同的解决方法，典型的有HDC（Hybrid Dilated Convolution）结构。</p>
+<h3 id="一些经典的CNN模型"><a href="#一些经典的CNN模型" class="headerlink" title="一些经典的CNN模型"></a>一些经典的CNN模型</h3><ul>
+<li><p><a href="[1409.1556.pdf (arxiv.org">VGGNet</a>](<a href="https://arxiv.org/pdf/1409.1556.pdf">https://arxiv.org/pdf/1409.1556.pdf</a>))</p>
+</li>
+<li><p><a href="[[1409.4842\] Going Deeper with Convolutions (arxiv.org">GoogLeNet</a>](<a href="https://arxiv.org/abs/1409.4842">https://arxiv.org/abs/1409.4842</a>))</p>
+</li>
+<li><a href="[1512.03385.pdf (arxiv.org">ResNet</a>](<a href="https://arxiv.org/pdf/1512.03385.pdf">https://arxiv.org/pdf/1512.03385.pdf</a>))</li>
+<li><a href="[1608.06993.pdf (arxiv.org">DenseNet</a>](<a href="https://arxiv.org/pdf/1608.06993.pdf">https://arxiv.org/pdf/1608.06993.pdf</a>))</li>
+<li><a href="[1608.06993.pdf (arxiv.org">FPN</a>](<a href="https://arxiv.org/pdf/1608.06993.pdf">https://arxiv.org/pdf/1608.06993.pdf</a>))</li>
+<li><a href="[1804.06215.pdf (arxiv.org">DetNet</a>](<a href="https://arxiv.org/pdf/1804.06215.pdf">https://arxiv.org/pdf/1804.06215.pdf</a>))</li>
 </ul>
 ]]></content>
       <tags>
