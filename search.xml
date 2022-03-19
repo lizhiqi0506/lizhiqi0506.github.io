@@ -166,7 +166,7 @@ x_3
 <li>生物进化：Dropout类似于性别在生物进化中的角色，物种为了适应环境变化，在繁衍时取雄性和雌性的各一半基因进行组合，这样可以适应更复杂的新环境，避免了单一基因的过拟合，当环境发生变化时也不至于灭绝。</li>
 </ul>
 <h3 id="Batch-Normalization"><a href="#Batch-Normalization" class="headerlink" title="Batch Normalization"></a>Batch Normalization</h3><ul>
-<li><a href="[Batch Normalization: Accelerating Deep Network Training by Reducing Internal Covariate Shift (mlr.press">BN Paper</a>](<a href="http://proceedings.mlr.press/v37/ioffe15.pdf">http://proceedings.mlr.press/v37/ioffe15.pdf</a>))</li>
+<li><a href="http://proceedings.mlr.press/v37/ioffe15.pdf">BN Paper</a></li>
 </ul>
 <p>由于网络中参数变化导致的内部节点数据分布发生变化的现象被称做ICS（Internal Covariate Shift）。ICS现象容易使训练过程陷入饱和区，减慢网络的收敛。前面提到的ReLU从激活函数的角度出发，在一定程度上解决了梯度饱和的现象，而2015年提出的BN层，则从改变数据分布的角度避免了参数陷入饱和区。由于BN层优越的性能，其已经是当前卷积网络中的“标配”。</p>
 <h4 id="BN的过程"><a href="#BN的过程" class="headerlink" title="BN的过程"></a>BN的过程</h4><p>对于一个batch的输入$x: B=\{x_1, …, x_m\}$，其中$m$为batch的大小，BN首先对其进行白化操作，即去均值方差的过程。</p>
@@ -186,7 +186,7 @@ y_i=\gamma\hat{x}_i+\beta</script><h4 id="BN的优点"><a href="#BN的优点" cl
 <li>数据的batch大小在训练与测试时往往不一样。在训练时一般采用滑动来计算平均值与方差，在测试时直接拿训练集的平均值与方差来使用。这种方式会导致测试集依赖于训练集，然而有时训练集与测试集的数据分布并不一致。</li>
 </ul>
 <h3 id="全连接层（Fully-Connected-Layers）"><a href="#全连接层（Fully-Connected-Layers）" class="headerlink" title="全连接层（Fully Connected Layers）"></a>全连接层（Fully Connected Layers）</h3><p>卷积网络的主要作用是从局部到整体地提取图像的特征，而全连接层则用来将卷积抽象出的特征图进一步映射到特定维度的标签空间，以求取损失或者输出预测结果。</p>
-<h3 id="全局平均池化（Global-Average-Pooling-GAP）"><a href="#全局平均池化（Global-Average-Pooling-GAP）" class="headerlink" title="全局平均池化（Global Average Pooling, GAP）"></a>全局平均池化（Global Average Pooling, GAP）</h3><p>然而，在大模型中，全连接层的参数量会变得十分庞大，会导致网络模型应用部署困难，并且其中存在着大量的参数冗余，也容易发生过拟合的现象。现在开始有很多工作采取GAP来取代全连接层，这种思想最早见于<a href="[[1312.4400\] Network In Network (arxiv.org">NIN</a>](<a href="https://arxiv.org/abs/1312.4400))（Network">https://arxiv.org/abs/1312.4400))（Network</a> in Network）网络中，</p>
+<h3 id="全局平均池化（Global-Average-Pooling-GAP）"><a href="#全局平均池化（Global-Average-Pooling-GAP）" class="headerlink" title="全局平均池化（Global Average Pooling, GAP）"></a>全局平均池化（Global Average Pooling, GAP）</h3><p>然而，在大模型中，全连接层的参数量会变得十分庞大，会导致网络模型应用部署困难，并且其中存在着大量的参数冗余，也容易发生过拟合的现象。现在开始有很多工作采取GAP来取代全连接层，这种思想最早见于<a href="https://arxiv.org/abs/1312.4400">NIN</a>（Network in Network）网络中，</p>
 <p>一般情况下，卷积层用于提取二维数据如图片、视频等的特征，针对于具体任务（分类、回归、图像分割）等，卷积层后续会用到不同类型的网络，拿分类问题举例，最简单的方式就是将卷积网络提取出的特征（feature map）输入到softmax全连接层对应不同的类别。首先，这里的feature map是二维多通道的数据结构，类似于三个通道（红黄绿）的彩色图片，也就是这里的feature map具有空间上的信息；其次，在GAP被提出之前，常用的方式是将feature map直接拉平成一维向量（下图左），但是GAP不同，是将每个通道的二维图像做平均，最后也就是每个通道对应一个均值（下图右）。</p>
 <p><img src="/2022/03/18/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%90%84%E5%85%83%E4%BB%B6%E8%A7%A3%E6%9E%90/GAP.png" alt="GAP"></p>
 <p>总体上，使用GAP有如下几点好处：</p>
@@ -197,7 +197,7 @@ y_i=\gamma\hat{x}_i+\beta</script><h4 id="BN的优点"><a href="#BN的优点" cl
 <li>赋予模型一定的可解释性</li>
 </ul>
 <p>但是，值得注意的是，在实践中发现使用GAP可能会导致收敛速度减慢。</p>
-<h3 id="空洞卷积（Dilated-Convolution）"><a href="#空洞卷积（Dilated-Convolution）" class="headerlink" title="空洞卷积（Dilated Convolution）"></a>空洞卷积（Dilated Convolution）</h3><p><a href="[1511.07122v2.pdf (arxiv.org">Paper</a>](<a href="https://arxiv.org/pdf/1511.07122v2.pdf">https://arxiv.org/pdf/1511.07122v2.pdf</a>))</p>
+<h3 id="空洞卷积（Dilated-Convolution）"><a href="#空洞卷积（Dilated-Convolution）" class="headerlink" title="空洞卷积（Dilated Convolution）"></a>空洞卷积（Dilated Convolution）</h3><p><a href="https://arxiv.org/pdf/1511.07122v2.pdf">Paper</a></p>
 <p>空洞卷积最初是为解决图像分割的问题而提出的。常见的图像分割算法通常使用池化层来增大感受野，同时也缩小了特征图尺寸，然后再利用上采样还原图像尺寸。特征图缩小再放大的过程造成了精度上的损失，因此需要有一种操作可以在增加感受野的同时保持特征图的尺寸不变，从而替代池化与上采样操作，在这种需求下，空洞卷积就诞生了。</p>
 <p>空洞卷积，顾名思义就是卷积核中间带有一些洞，跳过一些元素进行卷积。在此以3×3卷积为例，下图中，a是普通的卷积过程，在卷积核紧密排列在特征图上滑动计算，而b代表了空洞数为2的空洞卷积，可以看到，在特征图上每2行或者2列选取元素与卷积核卷积。类似地，c代表了空洞数为3的空洞卷积。</p>
 <p><img src="/2022/03/18/%E5%8D%B7%E7%A7%AF%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%90%84%E5%85%83%E4%BB%B6%E8%A7%A3%E6%9E%90/dilatedConv.png" alt="DilatedConv"></p>
@@ -210,14 +210,14 @@ y_i=\gamma\hat{x}_i+\beta</script><h4 id="BN的优点"><a href="#BN的优点" cl
 </ul>
 <p>对于上述缺陷，有多篇文章提出了不同的解决方法，典型的有HDC（Hybrid Dilated Convolution）结构。</p>
 <h3 id="一些经典的CNN模型"><a href="#一些经典的CNN模型" class="headerlink" title="一些经典的CNN模型"></a>一些经典的CNN模型</h3><ul>
-<li><p><a href="[1409.1556.pdf (arxiv.org">VGGNet</a>](<a href="https://arxiv.org/pdf/1409.1556.pdf">https://arxiv.org/pdf/1409.1556.pdf</a>))</p>
+<li><p><a href="https://arxiv.org/pdf/1409.1556.pdf">VGGNet</a></p>
 </li>
-<li><p><a href="[[1409.4842\] Going Deeper with Convolutions (arxiv.org">GoogLeNet</a>](<a href="https://arxiv.org/abs/1409.4842">https://arxiv.org/abs/1409.4842</a>))</p>
+<li><p><a href="https://arxiv.org/abs/1409.4842">GoogLeNet</a></p>
 </li>
-<li><a href="[1512.03385.pdf (arxiv.org">ResNet</a>](<a href="https://arxiv.org/pdf/1512.03385.pdf">https://arxiv.org/pdf/1512.03385.pdf</a>))</li>
-<li><a href="[1608.06993.pdf (arxiv.org">DenseNet</a>](<a href="https://arxiv.org/pdf/1608.06993.pdf">https://arxiv.org/pdf/1608.06993.pdf</a>))</li>
-<li><a href="[1608.06993.pdf (arxiv.org">FPN</a>](<a href="https://arxiv.org/pdf/1608.06993.pdf">https://arxiv.org/pdf/1608.06993.pdf</a>))</li>
-<li><a href="[1804.06215.pdf (arxiv.org">DetNet</a>](<a href="https://arxiv.org/pdf/1804.06215.pdf">https://arxiv.org/pdf/1804.06215.pdf</a>))</li>
+<li><a href="https://arxiv.org/pdf/1512.03385.pdf">ResNet</a></li>
+<li><a href="https://arxiv.org/pdf/1608.06993.pdf">DenseNet</a></li>
+<li><a href="https://arxiv.org/pdf/1608.06993.pdf">FPN</a></li>
+<li><a href="https://arxiv.org/pdf/1804.06215.pdf">DetNet</a></li>
 </ul>
 ]]></content>
       <tags>
