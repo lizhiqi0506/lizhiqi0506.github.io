@@ -171,8 +171,8 @@ x_3
 <p>由于网络中参数变化导致的内部节点数据分布发生变化的现象被称做ICS（Internal Covariate Shift）。ICS现象容易使训练过程陷入饱和区，减慢网络的收敛。前面提到的ReLU从激活函数的角度出发，在一定程度上解决了梯度饱和的现象，而2015年提出的BN层，则从改变数据分布的角度避免了参数陷入饱和区。由于BN层优越的性能，其已经是当前卷积网络中的“标配”。</p>
 <h4 id="BN的过程"><a href="#BN的过程" class="headerlink" title="BN的过程"></a>BN的过程</h4><p>对于一个batch的输入$x: B=\{x_1, …, x_m\}$，其中$m$为batch的大小，BN首先对其进行白化操作，即去均值方差的过程。</p>
 <script type="math/tex; mode=display">
-\mu_B=\frac{1}{m}\sum_{i=1}^{m}x_i \\
-\sigma^2_B = \frac{1}{m}\sum_{i=1}^{m}(x_i-\mu_B)^2 \\
+\mu_B=\frac{1}{m}\sum_{i=1}^{m}x_i</script><script type="math/tex; mode=display">
+\sigma^2_B = \frac{1}{m}\sum_{i=1}^{m}(x_i-\mu_B)^2 \\</script><script type="math/tex; mode=display">
 \hat{x}_i = \frac{x_i-\mu_B}{\sqrt{\sigma^2_B+\epsilon}}</script><p>其中$\epsilon$是为了数值稳定而添加的一个常数（论文原文是”a constant added to the mini-batch variance for numerical stability“，这里我也不明白为什么这样就可以使数值更稳定）</p>
 <p>白化操作可以使输入的特征分布具有相同的均值与方差，固定了每一层的输入分布，从而加速网络的收敛。但是，白化操作也限制了网络中数据的表达能力，浅层学到的参数信息会被白化操作屏蔽掉，因此，BN层在白化操作后又增加了一个可学习的线性变换操作（引入可学习参数$\gamma$和$\beta$），让数据尽可能地恢复本身的表达能力：</p>
 <script type="math/tex; mode=display">
