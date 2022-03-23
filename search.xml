@@ -216,6 +216,8 @@ E^TCE=\Lambda=diag(\lambda_1,\lambda_2,...,\lambda_N)</script><p>我们可以看
 <li><strong>可能会导致过拟合</strong>：PCA 保留了主要信息，但这个主要信息只是针对训练集的，而且这个主要信息未必是重要信息。有可能舍弃了一些看似无用的信息，但是这些看似无用的信息恰好是重要信息，只是在训练集上没有很大的表现，所以 PCA 也可能加剧了过拟合；</li>
 <li><strong>特征独立</strong>：PCA 不仅将数据压缩到低维，它也使得降维之后的数据各特征相互独立。</li>
 </ol>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a href="https://zhuanlan.zhihu.com/p/77151308">【机器学习】降维——PCA（非常详细） - 知乎 (zhihu.com)</a></p>
+<p><a href="https://blog.codinglabs.org/articles/pca-tutorial.html">CodingLabs - PCA的数学原理</a></p>
 ]]></content>
       <tags>
         <tag>线性代数</tag>
